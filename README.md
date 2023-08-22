@@ -1,6 +1,5 @@
 # LangChainApp
 A Blog Generator using OPENAI
 
-
-LangChainApp
+TECH USED : TailWind CSS , Node JS , Open AI 
 
