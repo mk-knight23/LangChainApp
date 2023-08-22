@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel = "stylesheet" href = "./static/css/output.css"></link>
+    <title>AI BLOG GENERATOR</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background-color: #2980b9;
+        }
+
+        nav li {
+            margin: 0;
+            padding: 1em;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        main {
+            padding: 2em;
+        }
+
+        section {
+            margin-bottom: 2em;
+        }
+
+        h1, h2 {
+            color: #3498db;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1em 0;
+            background-color: #3498db;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Blog Generator </h1>
+    </header>
+   <div>
+         <h2>Blog Generator Using AI</h2>
+    <textarea class="border my-2 p-2 w-full" placeholder="Enter text"></textarea>
+     <button id = "submitbtn" style="background-color: black; border-radius: 5px; color: white;">Submit</button>
+
+<div id="content" class="bg-gray-200 p-2">This is a field</div>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <h2>About Us</h2>
+            <p>We are a small and friendly team dedicated to providing quality and best learning Platform .  .</p>
+        </section>
+        <section>
+            <h2>Our Services</h2>
+            <ul>
+                <li>Web Design</li>
+                <li>Frontend Development</li>
+                <li>UI/UX Consultation</li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 MK Projects All rights reserved.</p>
+    </footer>
+
+     <script>
+const populate = async () => {
+    let promptText = document.querySelector('textarea').value;
+    let response = await fetch('/generate', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ prompt: promptText })
+    });
+  content.innerHTML = await response.text();
+};
+ const submitBtn = document.querySelector('#submitbtn');
+    submitBtn.addEventListener('click', () => {
+        populate();
+    });
+     </script>
+</body>
+</html>
